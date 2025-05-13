@@ -1,5 +1,6 @@
 import Team from './game/Team.js';
 import Character from './game/Character.js';
+import canIterate from './game/canIterate.js';
 
 // ПОДГОТОВКА ДАННЫХ ДЛЯ ТЕСТА
 const team = new Team();
@@ -7,6 +8,9 @@ const team = new Team();
 const character1 = new Character('Reece', 'Bowman');
 const character2 = new Character('Liam', 'Swordsman');
 const character3 = new Character('Noah', 'Magician');
+
+// ТЕСТЫ ДЛЯ СИМВОЛОВ, ИТЕРАТОРОВ И ГЕНЕРАТОРОВ
+console.log('\nСИМВОЛЫ, ИТЕРАТОРЫ И ГЕНЕРАТОРЫ');
 
 // ТЕСТ №1
 team.add(character1);
@@ -39,3 +43,11 @@ console.log(iterator.next()); // { done: true }
 team.clear();
 console.log('\nОЧИЩАЕМ КОМАНДУ ЧЕРЕЗ МЕТОД clear()');
 console.log(team.toArray()); // []
+
+// ТЕСТ ДЛЯ ПРОВЕРКИ ФУНКЦИИ canIterate()
+console.log('\nПРОВЕРКА ФУНКЦИИ canIterate()');
+canIterate(new Map());    // true (Map итерируем)
+canIterate(new Set());    // true (Set итерируем)
+canIterate(null);        // false (null не объект)
+canIterate(10);          // false (число не итерируемо)
+canIterate('Fullstack');  // true (строка итерируема)
